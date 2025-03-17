@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{508750D6-708B-4050-8AB9-C94CD46EEB90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterProject.API", "backend\WaterProject.API\WaterProject.API.csproj", "{70323C08-9D38-4EB7-8859-16AACEE8FDFC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{70323C08-9D38-4EB7-8859-16AACEE8FDFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70323C08-9D38-4EB7-8859-16AACEE8FDFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70323C08-9D38-4EB7-8859-16AACEE8FDFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70323C08-9D38-4EB7-8859-16AACEE8FDFC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{70323C08-9D38-4EB7-8859-16AACEE8FDFC} = {508750D6-708B-4050-8AB9-C94CD46EEB90}
+	EndGlobalSection
+EndGlobal
