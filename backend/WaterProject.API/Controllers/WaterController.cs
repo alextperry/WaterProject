@@ -18,8 +18,15 @@ namespace WaterProject.API.Controllers
         }
 
         [HttpGet("AllProjects")]
-        public IActionResult GetProjects(int pageSize = 10, int pageNum = 1)
+        public IActionResult GetProjects(int pageSize = 10, int pageNum = 1, [FromQuery] List<string>? projectTypes = null)
         {
+
+            var query = _waterContext.Projects.AsQueryable();
+
+            if (projectTypes != null && projectTypes.Any()) 
+            {
+                query = query.Where(p => projectTypes.Contains(p.ProjectType));
+            }
 
             string? FavProjectType = Request.Cookies["FavoriteProjectType"];
             Console.WriteLine("*******COOKIE****** " + FavProjectType);
@@ -32,14 +39,14 @@ namespace WaterProject.API.Controllers
                 Expires = DateTime.Now.AddMinutes(1)
             });
             
-          
             
-            var list = _waterContext.Projects
+            var totalNumProjects = query.Count();
+
+            var list = query
             .Skip((pageNum-1) * pageSize)
             .Take(pageSize)
             .ToList();
 
-            var totalNumProjects = _waterContext.Projects.Count();
 
             var newObject = new
             {
@@ -50,13 +57,24 @@ namespace WaterProject.API.Controllers
             return Ok(newObject);
         }
 
-        //[HttpGet("FunctionalProjects")]
-        public IEnumerable<Project> GetFunctionalProjects()
+        [HttpGet("GetProjectTypes")]
+        public IActionResult GetProjectTypes()
         {
-            var list = _waterContext.Projects.Where(p => p.ProjectFunctionalityStatus == "Functional").ToList();
+            var projectTypes = _waterContext.Projects
+                .Select(p => p.ProjectType)
+                .Distinct()
+                .ToList();
 
-            return list;
+            return Ok(projectTypes);
         }
+
+        //[HttpGet("FunctionalProjects")]
+        //public IEnumerable<Project> GetFunctionalProjects()
+        //{
+        //    var list = _waterContext.Projects.Where(p => p.ProjectFunctionalityStatus == "Functional").ToList();
+
+        //    return list;
+        //}
 
     }
 }
