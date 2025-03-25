@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\backend",
+    "\\backend\\WaterProject.API"
   ],
+  "SelectedNode": "\\backend\\WaterProject.API\\Program.cs",
   "PreviewInSolutionExplorer": false
 }
