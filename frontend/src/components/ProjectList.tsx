@@ -1,40 +1,40 @@
-import { useEffect, useState } from 'react'
-import { Project } from '../types/Project'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+import { Project } from '../types/Project';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 function ProjectList({ selectedCategories }: { selectedCategories: string[] }) {
-  const [projects, setProjects] = useState<Project[]>([])
+  const [projects, setProjects] = useState<Project[]>([]);
 
-  const [pageSize, setPageSize] = useState<number>(10)
+  const [pageSize, setPageSize] = useState<number>(10);
 
-  const [pageNum, setPageNum] = useState<number>(1)
+  const [pageNum, setPageNum] = useState<number>(1);
 
-  const [totalItems, setTotalItems] = useState<number>(0)
+  const [totalItems, setTotalItems] = useState<number>(0);
 
-  const [totalPages, setTotalPages] = useState<number>(0)
+  const [totalPages, setTotalPages] = useState<number>(0);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProjects = async () => {
       const categoryParams = selectedCategories
         .map((cat) => `projectTypes=${encodeURIComponent(cat)}`)
-        .join(`&`)
+        .join(`&`);
 
       const response = await fetch(
         `https://localhost:5000/api/Water/AllProjects?pageSize=${pageSize}&pageNum=${pageNum}${selectedCategories.length ? `&${categoryParams}` : ``}`,
         {
           credentials: 'include',
         },
-      )
-      const data = await response.json()
-      setProjects(data.projects)
-      setTotalItems(data.totalNumProjects)
-      setTotalPages(Math.ceil(totalItems / pageSize))
-    }
+      );
+      const data = await response.json();
+      setProjects(data.projects);
+      setTotalItems(data.totalNumProjects);
+      setTotalPages(Math.ceil(totalItems / pageSize));
+    };
 
-    fetchProjects()
-  }, [pageSize, pageNum, totalItems, selectedCategories])
+    fetchProjects();
+  }, [pageSize, pageNum, totalItems, selectedCategories]);
 
   return (
     <>
@@ -67,7 +67,9 @@ function ProjectList({ selectedCategories }: { selectedCategories: string[] }) {
 
             <button
               className=" btn btn-success"
-              onClick={() => navigate(`/donate/${p.projectName}/${p.projectId}`)}
+              onClick={() =>
+                navigate(`/donate/${p.projectName}/${p.projectId}`)
+              }
             >
               Donate
             </button>
@@ -100,8 +102,8 @@ function ProjectList({ selectedCategories }: { selectedCategories: string[] }) {
       <select
         value={pageSize}
         onChange={(p) => {
-          setPageSize(Number(p.target.value))
-          setPageNum(1)
+          setPageSize(Number(p.target.value));
+          setPageNum(1);
         }}
       >
         <option value="5">5</option>
@@ -109,7 +111,7 @@ function ProjectList({ selectedCategories }: { selectedCategories: string[] }) {
         <option value="20">20</option>
       </select>
     </>
-  )
+  );
 }
 
-export default ProjectList
+export default ProjectList;
