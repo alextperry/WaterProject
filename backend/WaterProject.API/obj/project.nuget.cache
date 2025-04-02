@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wb+aZ2uCH9M=",
+  "dgSpecHash": "wc5e+q2BGpA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\alext_x0p\\OneDrive\\Desktop\\WaterProject\\backend\\WaterProject.API\\WaterProject.API.csproj",
+  "projectFilePath": "C:\\Users\\alext_x0p\\OneDrive\\Desktop\\WaterProject\\backend\\WaterProject.Api\\WaterProject.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alext_x0p\\.nuget\\packages\\microsoft.data.sqlite.core\\8.0.14\\microsoft.data.sqlite.core.8.0.14.nupkg.sha512",
     "C:\\Users\\alext_x0p\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.14\\microsoft.entityframeworkcore.8.0.14.nupkg.sha512",
